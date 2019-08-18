@@ -126,7 +126,7 @@ class Linear(Module):
         if isinstance(pth_model, tnn.Linear):
             if pth_model.in_features == self.in_features and pth_model.out_features == self.out_features:
                 tmp = pth.model.weight.data.numpy()
-                self.weight.load(tmp, sess)
+                self.weight.load(np.transpose(tmp), sess)
                 if self.bias is not None:
                     tmp = pth.model.bias.data.numpy()
                     self.bias.load(tmp, sess)
